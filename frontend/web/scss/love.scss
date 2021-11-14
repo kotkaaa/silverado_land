@@ -1,0 +1,691 @@
+@import "common/mixin";
+@import "love/variable";
+
+body {
+  @extend %GothamPro;
+}
+
+.container {
+  @include breakpoint(1200) {
+    max-width: 1410px;
+  }
+}
+
+.header__media {
+  width: 100vw;
+  height: 100%;
+  min-height: 100%;
+  background-color: #000108;
+  background-image: url("/img/love/media-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto 100%;
+
+  video {
+    width: 100vw;
+    height: 100%;
+    min-height: 100%;
+    background: transparent;
+    position: relative;
+    z-index: 1;
+  }
+
+  .logo {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translate(-50%, -125px);
+    transition: all .75s ease-out;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 0;
+
+    img {
+      width: 50vw;
+      max-width: 300px;
+    }
+
+    .logo-text {
+      @extend %GothamProLight;
+      margin-top: 20px;
+      font-size: 15px;
+      color: #d9d9d9;
+      letter-spacing: .2em;
+    }
+
+    &.animate-in {
+      transform: translate(-50%, 0px);
+      opacity: 1;
+    }
+  }
+
+  .scrolldown {
+    position: absolute;
+    left: 50%;
+    bottom: 5vh;
+    width: 48px;
+    transform: translateX(-50%);
+    transition: opacity .5s ease;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 0;
+
+    &.animate-in {
+      opacity: 1;
+    }
+
+    span {
+      text-align: center;
+      letter-spacing: .2em;
+      line-height: 1.75;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+      transform: translateX(12px) rotate(-180deg);
+      font-size: 14px;
+      color: #d9d9d9;
+      text-shadow: 0 0 5px rgb(0 0 0 / 60%);
+    }
+
+    svg {
+      display: block;
+      margin: 12px auto 0;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: arrow-pulse 2s infinite;
+    }
+  }
+
+  .skip {
+    @extend %GothamProLight;
+    position: absolute;
+    bottom: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, .36);
+    color: #FFFFFF;
+    min-width: 280px;
+    z-index: 1;
+
+    &:hover {
+      animation: shadow-pulse 1.5s ;
+    }
+  }
+}
+
+.main__product {
+  .container {
+    @extend %PlayfairDisplayItalic;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-size: 2em;
+    color: #83808e;
+
+    @include breakpoint(960) {
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+
+  .main__product-left,
+  .main__product-right {
+    padding-bottom: 5em;
+    padding-top: 5em;
+
+    img {
+      width: 100%;
+      max-width: 480px;
+      height: auto;
+    }
+  }
+
+  .main__product-left {
+    .container {
+      text-align: center;
+
+      @include breakpoint(960) {
+        text-align: left;
+      }
+    }
+
+    img {
+      margin-bottom: 1em;
+      margin-left: -15px;
+      margin-right: -15px;
+
+      @include breakpoint(480) {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      @include breakpoint(960) {
+        margin-bottom: 0;
+        margin-left: 0;
+        margin-right: 3em;
+      }
+    }
+  }
+
+  .main__product-right {
+    background-color: #f5f7fa;
+
+    .container {
+      text-align: center;
+      flex-direction: column-reverse;
+
+      @include breakpoint(960) {
+        flex-direction: row;
+        text-align: right;
+      }
+    }
+
+    img {
+      margin-bottom: 1em;
+      margin-left: -15px;
+      margin-right: -15px;
+
+      @include breakpoint(480) {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      @include breakpoint(960) {
+        margin-bottom: 0;
+        margin-left: 3em;
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.main__offer {
+  background-image: url("/img/love/offer-bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-top: 4em;
+  padding-bottom: 6em;
+  color: #FFFFFF;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h2 {
+    @extend %GothamProMedium;
+    font-size: 2em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .36);
+    margin-bottom: 1em;
+    text-align: center;
+  }
+
+  svg {
+    animation: arrow-pulse 2s infinite;
+    margin-top: 2em;
+    margin-left: 52px;
+  }
+
+  .price {
+    @extend %CocoGothicAlternate;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .36);
+    font-size: 60px;
+    font-kerning: none;
+
+    small {
+      font-size: 36px;
+    }
+
+    .old {
+      font-size: 36px;
+      color: #8e8e8e;
+      position: relative;
+
+      &:after {
+        display: block;
+        position: absolute;
+        height: 2px;
+        top: 50%;
+        margin-top: -1px;
+        background: $pink;
+        left: -2px;
+        right: -2px;
+        transform: rotate(-15deg);
+        transform-origin: center;
+        content: '';
+        border-radius: 1px;
+      }
+    }
+  }
+
+  .btn {
+    @extend %PlayfairDisplayItalic;
+    background: transparent none;
+    border-color: #FFFFFF;
+    border-width: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, .36);
+    color: #FFFFFF;
+    font-size: 30px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-width: 320px;
+    margin-top: 2em;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, .12);
+      color: #FFFFFF;
+    }
+
+    &:active {
+      background-color: #FFFFFF;
+      color: #4D2065;
+    }
+
+    &:hover,
+    &:focus {
+      animation: shadow-pulse 1.5s ;
+    }
+  }
+}
+
+.main__checkout {
+  background: rgb(245,247,250);
+  background: linear-gradient(0deg, rgba(245,247,250,1) 0%, rgba(245,247,250,1) 50%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+  padding-top: 6em;
+  padding-bottom: 6em;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include breakpoint(960) {
+      flex-direction: row;
+      align-items: stretch;
+    }
+  }
+
+  .product-img {
+    box-shadow: -10px -10px 0px #e5e9ef;
+    max-width: 100%;
+  }
+
+  .checkout-form {
+    @include breakpoint(960) {
+      margin-left: 5em;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      height: 100%;
+      min-height: 100%;
+    }
+
+    .side-bottom,
+    .side-top {
+      min-height: 50%;
+      max-height: 50%;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .side-top {
+      justify-content: flex-end;
+      padding-bottom: 2em;
+    }
+
+    .side-bottom {
+      @include breakpoint(960) {
+        padding-top: 2em;
+      }
+    }
+
+    h3 {
+      @extend %GothamProMedium;
+      font-size: 36px;
+      color: #7f8795;
+      margin-top: 0;
+      margin-bottom: 0;
+
+      small {
+        font-size: 12px;
+        color: #c6cedc;
+      }
+    }
+
+    .field-orderform-size {
+      margin-bottom: 0;
+
+      .btn {
+        @extend %CocoGothicAlternateLight;
+        font-size: 14px;
+        padding: 0;
+        width: 50px;
+        height: 50px;
+        line-height: 44px;
+        border-width: 2px;
+        border-radius: 0px !important;
+        border-color: #83808e;
+        font-kerning: none;
+        margin-right: 3px;
+        margin-top: 3px;
+
+        + .btn {
+          margin-left: 0;
+        }
+
+        &.active {
+          border-color: $pink;
+          color: $pink;
+          background-color: #FFFFFF;
+          box-shadow: none;
+        }
+      }
+    }
+
+    .buy-button {
+      display: flex;
+      align-items: center;
+      flex-direction: column-reverse;
+
+      @include breakpoint(1200) {
+        flex-direction: row;
+      }
+
+      .btn-success {
+        padding: 1em 4em;
+
+        &:hover {
+          animation: shadow-pulse-blue 1.5s;
+        }
+      }
+
+      .price {
+        @extend %CocoGothicAlternateLight;
+        font-kerning: none;
+        font-size: 33px;
+        position: relative;
+        margin-bottom: 1em;
+
+        @include breakpoint(1200) {
+          margin-left: 30px;
+          margin-bottom: 0;
+        }
+
+        small {
+          font-size: 24px;
+        }
+
+        .old {
+          color: #adb5c3;
+          font-size: 24px;
+          position: relative;
+
+          &:after {
+            display: block;
+            position: absolute;
+            height: 2px;
+            top: 50%;
+            margin-top: -1px;
+            background: #e438ad;
+            left: -2px;
+            right: -2px;
+            -webkit-transform: rotate(-15deg);
+            transform: rotate(-15deg);
+            -webkit-transform-origin: center;
+            transform-origin: center;
+            content: "";
+            border-radius: 1px;
+          }
+        }
+
+        .hint {
+          @extend %GothamPro;
+          position: absolute;
+          color: #8c95a2;
+          font-size: 12px;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          white-space: nowrap;
+
+          @include breakpoint(1200) {
+            left: 0;
+            transform: none;
+          }
+
+          strong {
+            @extend %GothamProMedium;
+            color: $green;
+          }
+        }
+      }
+    }
+
+    .delivery-info {
+      display: flex;
+      font-size: 12px;
+      color: #bcc5d4;
+      flex-direction: column;
+      margin-top: 2em;
+
+      svg {
+        margin-bottom: 1em;
+        width: 127px;
+        height: 47px;
+      }
+    }
+  }
+}
+
+.main__goods {
+  padding-top: 4em;
+  padding-bottom: 4em;
+
+  h3 {
+    @extend %GothamProBlack;
+    font-size: 2.2em;
+    color: #c6cedc;
+    text-align: center;
+    margin-bottom: 1em;
+    margin-top: 0;
+
+    strong {
+      color: $green;
+      font-weight: inherit;
+    }
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+
+    .item {
+      @extend %GothamProMedium;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 100%;
+      margin-top: 2em;
+      margin-bottom: 2em;
+
+      @include breakpoint(640) {
+        max-width: 45%;
+      }
+
+      strong {
+        color: $green;
+        font-weight: inherit;
+      }
+
+      p {
+        margin: 0;
+      }
+
+      h4 {
+        @extend %GothamProBold;
+        color: #c6cedc;
+        margin-top: 1.5em;
+        margin-bottom: 1em;
+      }
+
+      img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        border: 10px solid #FFFFFF;
+        object-fit: cover;
+        box-shadow: 10px 6px 31px 0px rgba(2, 2, 3, 0.22);
+        box-sizing: border-box;
+      }
+    }
+  }
+}
+
+.main_footer {
+  @extend %GothamProMedium;
+  background-image: url("/img/love/footer-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding-top: 4em;
+  padding-bottom: 3em;
+  color: #FFFFFF;
+  font-size: 16px;
+  line-height: 1.5;
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .phone {
+    color: #75fcbf;
+    font-size: 3em;
+    text-decoration: none;
+    transition: color .2s ease;
+    margin-top: .25em;
+
+    &:hover {
+      color: #c5ffe0;
+    }
+  }
+
+  .btn-callback {
+    @extend %GothamProMedium;
+    background-color: transparent;
+    border-color: #FFFFFF;
+    border-width: 2px;
+    font-size: 16px;
+    padding-top: 1.4em;
+    padding-bottom: 1.4em;
+    padding-left: 2.2em;
+    padding-right: 2.2em;
+    color: #FFFFFF;
+    margin-top: 1.25em;
+
+    &:hover {
+      background-color: rgba(255,255,255,.12);
+    }
+
+    &:focus,
+    &:hover {
+      color: #FFFFFF;
+      animation: shadow-pulse 1.5s ;
+    }
+  }
+
+  .notice {
+    @extend %GothamPro;
+    opacity: .33;
+    margin-top: 1.4em;
+  }
+
+  .copyright {
+    line-height: 2.5;
+    margin-top: 6em;
+    margin-bottom: 0;
+
+    img {
+      opacity: .5;
+    }
+  }
+}
+
+@keyframes arrow-pulse {
+  0% {
+    transform: translate(-50%,0);
+  }
+
+  50% {
+    transform: translate(-50%, 10px);
+  }
+
+  100% {
+    transform: translate(-50%,0);
+  }
+}
+
+@keyframes shadow-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, .5);
+  }
+
+  70% {
+    box-shadow: 0 0 0 24px rgba(255, 255, 255, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes shadow-pulse-blue {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 209, 255, 0.5);
+  }
+
+  70% {
+    box-shadow: 0 0 0 24px rgba(0, 209, 255, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 209, 255, 0);
+  }
+}
+
+.btn-success {
+  background-image: -moz-linear-gradient( 0deg, rgb(50,219,125) 0%, rgb(64,112,244) 100%) !important;
+  background-image: -webkit-linear-gradient( 0deg, rgb(50,219,125) 0%, rgb(64,112,244) 100%) !important;
+  background-image: -ms-linear-gradient( 0deg, rgb(50,219,125) 0%, rgb(64,112,244) 100%) !important;
+  background-image: linear-gradient(to left, rgb(50,219,125), rgb(64,112,244)) !important;
+  background-size: 100% 1px;
+  background-repeat: repeat-y;
+  border: none !important;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, .39);
+  transition: background-size .3s ease-out;
+
+  &:hover {
+    background-size: 120% 1px;
+  }
+}
+
+.hidden {
+  display: none;
+}

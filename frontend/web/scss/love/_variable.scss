@@ -1,0 +1,79 @@
+@import "font-face";
+
+%GothamPro {
+  font-family: "Gotham Pro";
+  font-weight: normal;
+}
+
+%GothamProItalic {
+  font-family: "Gotham Pro";
+  font-weight: normal;
+  font-style: italic;
+}
+
+%GothamProLight {
+  font-family: "Gotham Pro";
+  font-weight: 300;
+}
+
+%GothamProLightItalic {
+  font-family: "Gotham Pro";
+  font-weight: 300;
+  font-style: italic;
+}
+
+%GothamProMedium {
+  font-family: "Gotham Pro";
+  font-weight: 500;
+}
+
+%GothamProMediumItalic {
+  font-family: "Gotham Pro";
+  font-weight: 500;
+  font-style: italic;
+}
+
+%GothamProBold {
+  font-family: "Gotham Pro";
+  font-weight: bold;
+}
+
+%GothamProBoldItalic {
+  font-family: "Gotham Pro";
+  font-weight: bold;
+  font-style: italic;
+}
+
+%GothamProBlack {
+  font-family: "Gotham Pro";
+  font-weight: 900;
+}
+
+%GothamProBlackItalic {
+  font-family: "Gotham Pro";
+  font-weight: 900;
+  font-style: italic;
+}
+
+%PlayfairDisplayBold {
+  font-family: "Playfair Display";
+  font-weight: bold;
+}
+
+%PlayfairDisplayItalic {
+  font-family: "Playfair Display";
+  font-style: italic;
+}
+
+%CocoGothicAlternate {
+  font-family: "Coco Gothic Alternate";
+  font-weight: normal;
+}
+
+%CocoGothicAlternateLight {
+  font-family: "Coco Gothic Alternate";
+  font-weight: 300;
+}
+
+$green: #32da7d;
+$pink: #e438ad;

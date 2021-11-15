@@ -2,11 +2,13 @@
 
 namespace frontend\models;
 
+use common\models\OrderInterface;
+
 /**
  * Class OrderForm
  * @package frontend\models
  */
-class OrderForm extends \yii\base\Model
+class OrderForm extends \yii\base\Model implements OrderInterface
 {
     /** @var string */
     public $sku;
@@ -16,6 +18,9 @@ class OrderForm extends \yii\base\Model
 
     /** @var string */
     public $name;
+
+    /** @var string */
+    public $surname;
 
     /** @var string */
     public $phone;
@@ -32,8 +37,8 @@ class OrderForm extends \yii\base\Model
     public function rules()
     {
         return [
-            [['sku', 'name', 'phone', 'city', 'warehouse'], 'required'],
-            [['sku', 'size', 'name', 'phone', 'city', 'warehouse'], 'safe'],
+            [['sku', 'name', 'surname', 'phone', 'city', 'warehouse'], 'required'],
+            [['sku', 'size', 'name', 'surname', 'phone', 'city', 'warehouse'], 'safe'],
         ];
     }
 }

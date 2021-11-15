@@ -689,3 +689,43 @@ body {
 .hidden {
   display: none;
 }
+
+.modal-backdrop {
+  &.show {
+    opacity: .5 !important;
+  }
+}
+
+.modal {
+  &.show {
+    opacity: 1 !important;
+
+    .modal-dialog-centered {
+      margin: 0 auto;
+      min-height: 100% !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transform: translate(0 ,0) !important;
+      padding: .5rem 0;
+      justify-content: center;
+
+      @include breakpoint(576) {
+        padding: 1.5rem 0;
+      }
+    }
+  }
+}
+
+.modal-header {
+  border-bottom: none;
+
+  .close {
+    @extend %CocoGothicAlternateLight;
+    text-shadow: none;
+    opacity: 1;
+    margin-right: -5px;
+    font-size: 3em;
+    padding: 0;
+  }
+}

@@ -6,6 +6,11 @@
 use frontend\assets\LoveAsset;
 use kartik\form\ActiveForm;
 use yii\bootstrap4\Modal;
+use kartik\select2\Select2;
+use yii\helpers\Url;
+use yii\helpers\Html;
+use yii\web\JsExpression;
+use common\helpers\PhoneHelper;
 
 LoveAsset::register($this);
 ?>
@@ -120,7 +125,7 @@ LoveAsset::register($this);
             <img class="product-img" src="/uploads/love/product-3-ru.jpg" alt="">
 
             <div class="checkout-form">
-                <?php $form = ActiveForm::begin() ?>
+                <?php $form = ActiveForm::begin(['id' => 'checkoutForm', 'action' => Url::to(['/site/order'])]) ?>
                     <div class="side-top">
                         <h3>
                             <small>для оформлення замовлення</small><br>
@@ -129,11 +134,77 @@ LoveAsset::register($this);
 
                         <?= $form->field($order, 'sku')->hiddenInput(['value' => 222])->label(false) ?>
 
-                        <?= $form->field($order, 'size', ['template' => '{input}'])->radioButtonGroup(array_combine([16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 21], [16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 21]), ['unselect' => null])->label(false) ?>
+                        <?= $form->field($order, 'size', ['template' => '{input}'])->radioButtonGroup(array_combine([15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 21], [15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 21]), ['unselect' => null])->label(false) ?>
                     </div>
                     <div class="side-bottom">
                         <div class="buy-button">
-                            <btn class="btn btn-success btn-lg">Замовити</btn>
+                            <?php Modal::begin([
+                                'id' => 'checkoutModal',
+                                'centerVertical' => true,
+                                'toggleButton' => [
+                                    'tag' => 'a',
+                                    'class' => 'btn btn-success btn-lg',
+                                    'label' => 'Замовити'
+                                ]
+                            ]) ?>
+
+                            <div class="checkout-proceed">
+                                <p class="text-muted">
+                                    Для продовження вкажіть будь ласка ПІБ, номер телефону та відділення Нової Пошти
+                                </p>
+
+                                <?= $form->field($order, 'name')->textInput() ?>
+
+                                <?= $form->field($order, 'surname')->textInput() ?>
+
+                                <?= $form->field($order, 'phone')->textInput(['type' => 'tel']) ?>
+
+                                <?= $form->field($order, 'city')->widget(Select2::className(), [
+                                    'options' => [
+                                        'multiple' => false,
+                                        'placeholder' => '-- Select --'
+                                    ],
+                                    'pluginOptions' => [
+                                        'dropdownParent' => '#checkoutModal',
+                                        'allowClear' => true,
+                                        'minimumInputLength' => 3,
+                                        'language' => [
+                                            'errorLoading' => new JsExpression("function () { return 'Waiting for results...'; }"),
+                                        ],
+                                        'ajax' => [
+                                            'url' => Url::to('/site/search-city'),
+                                            'dataType' => 'json',
+                                            'data' => new JsExpression('function(params) { return {term:params.term}; }')
+                                        ],
+                                        'escapeMarkup' => new JsExpression('function (markup) { return markup; }'),
+                                        'templateResult' => new JsExpression('function(result) { return result.text; }'),
+                                        'templateSelection' => new JsExpression('function (result) { return result.text; }'),
+                                    ],
+                                    'pluginEvents' => [
+                                        'change.select2' => new JsExpression('function(e) {return Checkout.getWareHouses(e.target.value);}'),
+                                        'select2:clear' => new JsExpression('function(e) {return Checkout.clearWareHouses();}')
+                                    ],
+                                    'bsVersion' => '4.x',
+                                    'theme' => Select2::THEME_KRAJEE_BS4
+                                ]) ?>
+
+                                <?= $form->field($order, 'warehouse')->widget(Select2::className(), [
+                                    'options' => [
+                                        'multiple' => false,
+                                        'placeholder' => '-- Select --'
+                                    ],
+                                    'pluginOptions' => [
+                                        'allowClear' => true,
+                                        'dropdownParent' => '#checkoutModal'
+                                    ],
+                                    'bsVersion' => '4.x',
+                                    'theme' => Select2::THEME_KRAJEE_BS4
+                                ]) ?>
+
+                                <?= Html::submitButton('Оформити замовлення', ['class' => 'btn btn-success btn-lg']) ?>
+                            </div>
+
+                            <?php Modal::end() ?>
 
                             <div class="price">
                                 <span class="old">990</span>
@@ -240,7 +311,7 @@ LoveAsset::register($this);
             <p>Замовити каблучку для заручин онлайн<br>
                 або за телефоном</p>
 
-            <a href="tel:+380978270762" class="phone">097 827 07 62</a>
+            <a href="tel:<?= \Yii::$app->params['adminPhone'] ?>" class="phone"><?= PhoneHelper::format(\Yii::$app->params['adminPhone'], PhoneHelper::PHONE_FORMAT_SHORT_PRINT) ?></a>
 
             <btn class="btn btn-lg btn-callback">замовити зворотній дзвінок</btn>
 

@@ -30,4 +30,68 @@ var App = {
     }
 };
 
-window.addEventListener('DOMContentLoaded', App.play, false);
+var Checkout = {
+    form: null,
+    init: function () {
+        var self = this;
+
+        self.form = $('#checkoutForm');
+
+        // Phone mask
+        self.form.find("#orderform-phone").inputmask({
+            mask: "+38 999 999 99 99",
+            greedy: false,
+            definitions: {
+                '*': {
+                    validator: "[0-9]",
+                    cardinality: 1,
+                    casing: "lower"
+                }
+            }
+        });
+    },
+    getWareHouses: function (cityName) {
+        if (!cityName || !cityName.length) {
+            return false;
+        }
+
+        var self = this,
+            select = self.form.find('#orderform-warehouse');
+
+        $.ajax({
+            url: '/site/search-warehouse',
+            type: 'get',
+            dataType: 'json',
+            data: {
+                term: cityName
+            },
+            success: function (response) {
+                for (var i = 0; i < response.results.length; i++) {
+                    var newOption = new Option(response.results[i].text, response.results[i].id, false, false);
+                    select.append(newOption).trigger('change');
+                }
+
+                select.select2('open');
+            },
+            complete: function () {
+                self.form.removeClass('loading');
+            },
+            beforeSend: function () {
+                self.form.addClass('loading');
+                self.clearWareHouses();
+            }
+        });
+    },
+    clearWareHouses: function () {
+        var self = this,
+            select = self.form.find('#orderform-warehouse'),
+            newOption = new Option('-- Select --', null, false, false);;
+
+        select.html(newOption).val(null).trigger('change');
+    }
+};
+
+$(function () {
+    App.play();
+    Checkout.init();
+});

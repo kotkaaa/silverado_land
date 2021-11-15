@@ -17,7 +17,7 @@ class LoveController extends \yii\web\Controller
     {
         return $this->render('index', [
             'order' => new OrderForm([
-                'size' => 16
+                'size' => 15
             ])
         ]);
     }

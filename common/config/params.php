@@ -1,5 +1,7 @@
 <?php
+
 return [
+    'adminPhone' => '+380978270762',
     'adminEmail' => 'admin@example.com',
     'supportEmail' => 'support@example.com',
     'senderEmail' => 'noreply@example.com',

@@ -41,4 +41,18 @@ class OrderForm extends \yii\base\Model implements OrderInterface
             [['sku', 'size', 'name', 'surname', 'phone', 'city', 'warehouse'], 'safe'],
         ];
     }
+
+    /**
+     * @return array
+     */
+    public function attributeLabels()
+    {
+        return [
+            'name' =>  \Yii::t('app', 'Ім\'я'),
+            'surname' =>  \Yii::t('app', 'Прізвище'),
+            'phone' =>  \Yii::t('app', 'Телефон'),
+            'city' =>  \Yii::t('app', 'Населений пункт'),
+            'warehouse' =>  \Yii::t('app', 'Відділення Нової Пошти')
+        ];
+    }
 }

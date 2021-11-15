@@ -16,7 +16,7 @@ LoveAsset::register($this);
 ?>
 
 <header class="header__media">
-    <video src="/uploads/love/silverado_jewelry_ru.mp4" id="intro" preload="auto" allow="autoplay" autoplay playsinline muted></video>
+    <video src="/uploads/love/silverado_jewelry_<?= Yii::$app->language ?>.mp4" id="intro" preload="auto" allow="autoplay" autoplay playsinline muted></video>
 
     <div class="logo">
         <img src="/img/love/logo-top.svg" alt="Silverado">
@@ -25,7 +25,7 @@ LoveAsset::register($this);
     </div>
 
     <div class="scrolldown">
-        <span>продовжити</span>
+        <span><?=  \Yii::t('app', 'продовжити') ?></span>
 
         <svg width="52" height="35" viewBox="0 0 52 35" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g filter="url(#filter0_d)">
@@ -46,14 +46,14 @@ LoveAsset::register($this);
         </svg>
     </div>
 
-    <button class="btn btn-lg skip">пропустити заставку</button>
+    <button class="btn btn-lg skip"><?=  \Yii::t('app', 'пропустити заставку') ?></button>
 </header>
 
 <main class="main__container hidden">
     <section class="main__product">
         <div class="main__product-left">
             <div class="container">
-                <img src="/uploads/love/product-1-ru.jpg" alt="">
+                <img src="/uploads/love/product-1-<?= Yii::$app->language ?>.jpg" alt="">
 
                 Найкращий подарунок для освідчення коханій!<br>
                 У найважливішу мить твого життя,<br>
@@ -71,13 +71,13 @@ LoveAsset::register($this);
                 написані на її ніжному пальчику<br>
                 не дозволять їй сказати “Ні”
 
-                <img src="/uploads/love/product-2-ru.jpg" alt="">
+                <img src="/uploads/love/product-2-<?= Yii::$app->language ?>.jpg" alt="">
             </div>
         </div>
 
         <div class="main__product-left">
             <div class="container">
-                <img src="/uploads/love/product-3-ru.jpg" alt="">
+                <img src="/uploads/love/product-3-<?= Yii::$app->language ?>.jpg" alt="">
 
                 Найкращий подарунок для освідчення коханій!<br>
                 У найважливішу мить твого життя,<br>
@@ -90,7 +90,7 @@ LoveAsset::register($this);
 
     <section class="main__offer">
         <div class="container">
-            <h2>Купити каблучку для заручин за акційною ціною</h2>
+            <h2><?=  \Yii::t('app', 'Купити каблучку для заручин за акційною ціною') ?></h2>
 
             <div class="price">
                 <span class="old">990</span>
@@ -116,20 +116,20 @@ LoveAsset::register($this);
                 </defs>
             </svg>
 
-            <button class="btn btn-lg">замовити зараз</button>
+            <button class="btn btn-lg"><?=  \Yii::t('app', 'замовити зараз') ?></button>
         </div>
     </section>
 
     <section class="main__checkout">
         <div class="container">
-            <img class="product-img" src="/uploads/love/product-3-ru.jpg" alt="">
+            <img class="product-img" src="/uploads/love/product-3-<?= Yii::$app->language ?>.jpg" alt="">
 
             <div class="checkout-form">
                 <?php $form = ActiveForm::begin(['id' => 'checkoutForm', 'action' => Url::to(['/site/order'])]) ?>
                     <div class="side-top">
                         <h3>
-                            <small>для оформлення замовлення</small><br>
-                            Оберіть розмір каблучки
+                            <small><?= \Yii::t('app', 'для оформлення замовлення') ?></small><br>
+                            <?=  \Yii::t('app', 'Оберіть розмір каблучки') ?>
                         </h3>
 
                         <?= $form->field($order, 'sku')->hiddenInput(['value' => 222])->label(false) ?>
@@ -144,7 +144,7 @@ LoveAsset::register($this);
                                 'toggleButton' => [
                                     'tag' => 'a',
                                     'class' => 'btn btn-success btn-lg',
-                                    'label' => 'Замовити'
+                                    'label' => \Yii::t('app', 'Замовити')
                                 ]
                             ]) ?>
 
@@ -201,7 +201,7 @@ LoveAsset::register($this);
                                     'theme' => Select2::THEME_KRAJEE_BS4
                                 ]) ?>
 
-                                <?= Html::submitButton('Оформити замовлення', ['class' => 'btn btn-success btn-lg']) ?>
+                                <?= Html::submitButton( \Yii::t('app', 'Оформити замовлення'), ['class' => 'btn btn-success btn-lg']) ?>
                             </div>
 
                             <?php Modal::end() ?>
@@ -212,7 +212,7 @@ LoveAsset::register($this);
                                 <small>грн</small>
 
                                 <span class="hint">
-                                    <strong>+</strong> подарункова упаковка у подарунок
+                                    <strong>+</strong> <?=  \Yii::t('app', 'подарункова упаковка у подарунок') ?>
                                 </span>
                             </div>
                         </div>
@@ -236,9 +236,7 @@ LoveAsset::register($this);
                                 </g>
                             </svg>
 
-                            Швидка доставка по всій території України
-                            крім тимчасово окупованих АР Крим
-                            та окремих районів Донецької та Луганської областей
+                            <?=  \Yii::t('app', 'Швидка доставка по всій території України крім тимчасово окупованих АР Крим та окремих районів Донецької та Луганської областей') ?>
                         </div>
                     </div>
                 <?php ActiveForm::end() ?>
@@ -247,11 +245,11 @@ LoveAsset::register($this);
     </section>
 
     <section class="main__goods">
-        <h3>Чому варто <strong>купити каблучку для заручин?</strong></h3>
+        <h3><?=  \Yii::t('app', 'Чому варто <strong>купити каблучку для заручин?</strong>') ?></h3>
 
         <div class="container">
             <div class="item">
-                <img src="/uploads/love/goods-1-ru.jpg" alt="">
+                <img src="/uploads/love/goods-1-<?= Yii::$app->language ?>.jpg" alt="">
 
                 <h4>Кохана буде у захваті</h4>
 
@@ -262,7 +260,7 @@ LoveAsset::register($this);
             </div>
 
             <div class="item">
-                <img src="/uploads/love/goods-2-ru.jpg" alt="">
+                <img src="/uploads/love/goods-2-<?= Yii::$app->language ?>.jpg" alt="">
 
                 <h4>Ексклюзивний товар</h4>
 
@@ -272,7 +270,7 @@ LoveAsset::register($this);
             </div>
 
             <div class="item">
-                <img src="/uploads/love/goods-3-ru.jpg" alt="">
+                <img src="/uploads/love/goods-3-<?= Yii::$app->language ?>.jpg" alt="">
 
                 <h4>100% срібло</h4>
 
@@ -283,7 +281,7 @@ LoveAsset::register($this);
             </div>
 
             <div class="item">
-                <img src="/uploads/love/goods-4-ru.jpg" alt="">
+                <img src="/uploads/love/goods-4-<?= Yii::$app->language ?>.jpg" alt="">
 
                 <h4>Безпечна покупка</h4>
 
@@ -294,7 +292,7 @@ LoveAsset::register($this);
             </div>
 
             <div class="item">
-                <img src="/uploads/love/goods-5-ru.jpg" alt="">
+                <img src="/uploads/love/goods-5-<?= Yii::$app->language ?>.jpg" alt="">
 
                 <h4>Подарункова упаковка</h4>
 
@@ -308,16 +306,13 @@ LoveAsset::register($this);
 
     <footer class="main_footer">
         <div class="container">
-            <p>Замовити каблучку для заручин онлайн<br>
-                або за телефоном</p>
+            <p><?=  \Yii::t('app', 'Замовити каблучку для заручин онлайн<br>або за телефоном') ?></p>
 
             <a href="tel:<?= \Yii::$app->params['adminPhone'] ?>" class="phone"><?= PhoneHelper::format(\Yii::$app->params['adminPhone'], PhoneHelper::PHONE_FORMAT_SHORT_PRINT) ?></a>
 
-            <btn class="btn btn-lg btn-callback">замовити зворотній дзвінок</btn>
+            <btn class="btn btn-lg btn-callback"><?=  \Yii::t('app', 'замовити зворотній дзвінок') ?></btn>
 
-            <p class="notice">Для оформлення замовлення по телефону<br>
-                необхідно вказати розмір каблучки, населений пункт та номер відділення Нової Пошти<br>
-                ПІБ та номер телефону отримувача посилки</p>
+            <p class="notice"><?=  \Yii::t('app', 'Для оформлення замовлення по телефону<br>необхідно вказати розмір каблучки, населений пункт та номер відділення Нової Пошти<br>ПІБ та номер телефону отримувача посилки') ?></p>
 
             <p class="copyright">
                 <img src="/img/love/logo-top.svg" alt="Silverado" width="186"><br>

@@ -12,9 +12,13 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'defaultRoute' => 'love/index',
+    'sourceLanguage' => 'ua',
+    'bootstrap' => ['log', 'languages'],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
+            'baseUrl' => '',
+            'class' => 'common\components\Request'
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -37,12 +41,37 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'i18n' => [
+            'translations' => [
+                'app' => [
+                    'class' => \yii\i18n\PhpMessageSource::class,
+                    //'forceTranslation' => true,
+                    'basePath' => '@frontend/messages',
+                    'fileMap' => [
+                        'app' => 'love.php'
+                    ]
+                ],
+            ],
+        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'class' => 'common\components\UrlManager',
             'rules' => [
+                'languages' => 'languages/default/index', //для модуля мультиязычности
             ],
         ],
+    ],
+    'modules' => [
+        'languages' => [
+            'class' => 'common\modules\languages\Module',
+            'languages' => [
+                'Русский' => 'ru',
+                'Українська' => 'uk',
+            ],
+            'default_language' => 'ua',
+            'show_default' => false,
+        ]
     ],
     'params' => $params,
 ];

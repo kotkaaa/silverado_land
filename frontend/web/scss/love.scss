@@ -366,7 +366,6 @@ body {
       margin-bottom: 0;
 
       .btn {
-        @extend %CocoGothicAlternateLight;
         font-size: 14px;
         padding: 0;
         width: 50px;
@@ -384,8 +383,9 @@ body {
         }
 
         &.active {
-          border-color: $pink;
-          color: $pink;
+          @extend %GothamProMedium;
+          border-color: #f3ab50;
+          color: #d78c2d;
           background-color: #FFFFFF;
           box-shadow: none;
         }
@@ -465,7 +465,7 @@ body {
 
           strong {
             @extend %GothamProMedium;
-            color: $green;
+            color: $gold;
           }
         }
       }
@@ -500,7 +500,7 @@ body {
     margin-top: 0;
 
     strong {
-      color: $green;
+      color: $gold;
       font-weight: inherit;
     }
   }
@@ -527,7 +527,7 @@ body {
       }
 
       strong {
-        color: $green;
+        color: $gold;
         font-weight: inherit;
       }
 
@@ -576,14 +576,14 @@ body {
   }
 
   .phone {
-    color: #75fcbf;
+    color: #ffeaaa;
     font-size: 3em;
     text-decoration: none;
     transition: color .2s ease;
     margin-top: .25em;
 
     &:hover {
-      color: #c5ffe0;
+      color: #ffffff;
     }
   }
 

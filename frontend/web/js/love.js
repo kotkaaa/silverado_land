@@ -56,10 +56,11 @@ var Checkout = {
         }
 
         var self = this,
-            select = self.form.find('#orderform-warehouse');
+            select = self.form.find('#orderform-warehouse'),
+            url = select.data('url') || '/site/search-warehouse';
 
         $.ajax({
-            url: '/site/search-warehouse',
+            url: url,
             type: 'get',
             dataType: 'json',
             data: {

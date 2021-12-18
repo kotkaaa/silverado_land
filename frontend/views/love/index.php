@@ -167,7 +167,7 @@ LoveAsset::register($this);
                                             'errorLoading' => new JsExpression("function () { return 'Waiting for results...'; }"),
                                         ],
                                         'ajax' => [
-                                            'url' => Url::to('/site/search-city'),
+                                            'url' => Url::to(['/site/search-city']),
                                             'dataType' => 'json',
                                             'data' => new JsExpression('function(params) { return {term:params.term}; }')
                                         ],
@@ -180,20 +180,21 @@ LoveAsset::register($this);
                                         'select2:clear' => new JsExpression('function(e) {return Checkout.clearWareHouses();}')
                                     ],
                                     'bsVersion' => '4.x',
-                                    'theme' => Select2::THEME_KRAJEE_BS4
+                                    'theme' => Select2::THEME_BOOTSTRAP
                                 ]) ?>
 
                                 <?= $form->field($order, 'warehouse')->widget(Select2::className(), [
                                     'options' => [
                                         'multiple' => false,
-                                        'placeholder' => '-- Select --'
+                                        'placeholder' => '-- Select --',
+                                        'data-url' => Url::to(['/site/search-warehouse'])
                                     ],
                                     'pluginOptions' => [
                                         'allowClear' => true,
                                         'dropdownParent' => '#checkoutModal'
                                     ],
                                     'bsVersion' => '4.x',
-                                    'theme' => Select2::THEME_KRAJEE_BS4
+                                    'theme' => Select2::THEME_BOOTSTRAP
                                 ]) ?>
 
                                 <?= Html::submitButton( \Yii::t('app', 'Оформити замовлення'), ['class' => 'btn btn-success btn-lg']) ?>

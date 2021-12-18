@@ -1,10 +1,12 @@
 <?php
 
-/** @var \frontend\models\OrderForm $order */
+/** @var \common\models\Order $order */
 /** @var \yii\web\View $this */
 ?>
 
 Нове замовлення!
+
+Номер: <?= $order->id ?>
 
 Артикул: <?= $order->sku ?>
 

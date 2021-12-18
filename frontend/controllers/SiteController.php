@@ -95,8 +95,8 @@ class SiteController extends Controller
 
         foreach ($this->orderService->findCity($term) as $city) {
             $out['results'][] = [
-                'id' => $city['DescriptionRu'],
-                'text' => $city['DescriptionRu'],
+                'id' => \Yii::$app->language == 'ru' ? $city['DescriptionRu'] : $city['Description'],
+                'text' => \Yii::$app->language == 'ru' ? $city['DescriptionRu'] : $city['Description'],
                 'ref' => $city['Ref']
             ];
         }
@@ -114,8 +114,8 @@ class SiteController extends Controller
 
         foreach ($this->orderService->findWarehouse($term) as $warehouse) {
             $out['results'][] = [
-                'id' => $warehouse['DescriptionRu'],
-                'text' => $warehouse['DescriptionRu'],
+                'id' => \Yii::$app->language == 'ru' ? $warehouse['DescriptionRu'] : $warehouse['Description'],
+                'text' => \Yii::$app->language == 'ru' ? $warehouse['DescriptionRu'] : $warehouse['Description'],
                 'ref' => $warehouse['Ref']
             ];
         }

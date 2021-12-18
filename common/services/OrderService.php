@@ -4,6 +4,7 @@ namespace common\services;
 
 use common\components\delivery\api\NovaPoshtaApi;
 use common\components\Turbosms;
+use common\models\Order;
 use common\models\OrderInterface;
 use common\helpers\PhoneHelper;
 
@@ -37,17 +38,31 @@ class OrderService extends \yii\base\Component
      */
     public function createOrder(OrderInterface $order): bool
     {
-        if (!$order->validate()) {
+        if (!$order->validate() || ($model = $this->saveOrder($order)) === null) {
             return false;
         }
 
-        if (\Yii::$app->sms->compose('order_create_admin', ['order' => $order])->setTo(\Yii::$app->params['adminPhone'])->send()) {
-            \Yii::$app->sms->compose('order_create_user')->setTo(PhoneHelper::format($order->phone, PhoneHelper::PHONE_FORMAT_INT))->send();
-
+        if (\Yii::$app->sms->compose('order_create_admin', ['order' => $model])->setTo(\Yii::$app->params['adminPhone'])->send()) {
+            \Yii::$app->sms->compose('order_create_user', ['order' => $model])->setTo(PhoneHelper::format($order->phone, PhoneHelper::PHONE_FORMAT_INT))->send();
             return true;
         }
 
         return false;
+    }
+
+    /**
+     * @param OrderInterface $order
+     * @return bool
+     */
+    public function saveOrder(OrderInterface $order): ?Order
+    {
+        $model = new Order($order->getAttributes());
+
+        if ($model->save()) {
+            return $model;
+        }
+
+        return null;
     }
 
     /**

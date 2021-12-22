@@ -24,7 +24,7 @@ LoveAsset::register($this);
         <span class="logo-text">jewelry boutique</span>
     </div>
 
-    <div class="scrolldown">
+    <div class="scrolldown anchor-link" data-anchor="main-product">
         <span><?=  \Yii::t('app', 'продовжити') ?></span>
 
         <svg width="52" height="35" viewBox="0 0 52 35" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -50,37 +50,8 @@ LoveAsset::register($this);
 </header>
 
 <main class="main__container hidden">
-    <section class="main__product">
-        <div class="main__product-left">
-            <div class="container">
-                <img src="/uploads/love/product-1-<?= Yii::$app->language ?>.jpg" alt="">
-
-                Почуття найцінніший подарунок.<br>
-                Зроби цей день незабутнім, а її кохання ще сильнішим.<br>
-                Вона буде у захваті!
-            </div>
-        </div>
-
-        <div class="main__product-right">
-            <div class="container">
-                <ul style="text-align: left; list-style: circle">
-                    <li>срібло 925 проби з комбінацією золота 375 проби</li>
-                    <li>фіаніти</li>
-                    <li>середня вага 2,2 грами</li>
-                    <li>розміри від 15,0 до 21,0</li>
-                </ul>
-
-                <img src="/uploads/love/product-2-<?= Yii::$app->language ?>.jpg" alt="">
-            </div>
-        </div>
-
-        <div class="main__product-left">
-            <div class="container">
-                <img src="/uploads/love/product-3-<?= Yii::$app->language ?>.jpg" alt="">
-
-                Обирай розмір та замовляй за акційною ціною!
-            </div>
-        </div>
+    <section class="main__product" id="main-product">
+        <?= $this->render('_blocks-' . \Yii::$app->language) ?>
     </section>
 
     <section class="main__offer">
@@ -111,13 +82,13 @@ LoveAsset::register($this);
                 </defs>
             </svg>
 
-            <button class="btn btn-lg"><?=  \Yii::t('app', 'замовити зараз') ?></button>
+            <button class="btn btn-lg anchor-link" data-anchor="main-checkout"><?=  \Yii::t('app', 'замовити зараз') ?></button>
         </div>
     </section>
 
-    <section class="main__checkout">
+    <section class="main__checkout" id="main-checkout">
         <div class="container">
-            <img class="product-img" src="/uploads/love/product-3-<?= Yii::$app->language ?>.jpg" alt="">
+            <img class="product-img" width="480" height="480" src="/uploads/love/product-<?= Yii::$app->language ?>.jpg" alt="">
 
             <div class="checkout-form">
                 <?php $form = ActiveForm::begin(['id' => 'checkoutForm', 'action' => Url::to(['/site/order'])]) ?>
@@ -148,11 +119,11 @@ LoveAsset::register($this);
                                     Для продовження вкажіть будь ласка ПІБ, номер телефону та відділення Нової Пошти
                                 </p>
 
-                                <?= $form->field($order, 'name')->textInput() ?>
+                                <?= $form->field($order, 'name')->textInput(['class' => 'form-control input-lg']) ?>
 
-                                <?= $form->field($order, 'surname')->textInput() ?>
+                                <?= $form->field($order, 'surname')->textInput(['class' => 'form-control input-lg']) ?>
 
-                                <?= $form->field($order, 'phone')->textInput(['type' => 'tel']) ?>
+                                <?= $form->field($order, 'phone')->textInput(['type' => 'tel', 'class' => 'form-control input-lg']) ?>
 
                                 <?= $form->field($order, 'city')->widget(Select2::className(), [
                                     'options' => [
@@ -180,7 +151,8 @@ LoveAsset::register($this);
                                         'select2:clear' => new JsExpression('function(e) {return Checkout.clearWareHouses();}')
                                     ],
                                     'bsVersion' => '4.x',
-                                    'theme' => Select2::THEME_BOOTSTRAP
+                                    'theme' => Select2::THEME_BOOTSTRAP,
+                                    'size' => Select2::LARGE
                                 ]) ?>
 
                                 <?= $form->field($order, 'warehouse')->widget(Select2::className(), [
@@ -194,7 +166,8 @@ LoveAsset::register($this);
                                         'dropdownParent' => '#checkoutModal'
                                     ],
                                     'bsVersion' => '4.x',
-                                    'theme' => Select2::THEME_BOOTSTRAP
+                                    'theme' => Select2::THEME_BOOTSTRAP,
+                                    'size' => Select2::LARGE
                                 ]) ?>
 
                                 <?= Html::submitButton( \Yii::t('app', 'Оформити замовлення'), ['class' => 'btn btn-success btn-lg']) ?>
@@ -244,59 +217,7 @@ LoveAsset::register($this);
         <h3><?=  \Yii::t('app', 'Чому варто <strong>купити каблучку для заручин?</strong>') ?></h3>
 
         <div class="container">
-            <div class="item">
-                <img src="/uploads/love/goods-1-<?= Yii::$app->language ?>.jpg" alt="">
-
-                <h4>Кохана буде у захваті</h4>
-
-                <p>Ніжний та вишуканий подарунок<br>
-                на якому написані слова Вашого кохання<br>
-                зробить цю мить по-справжньому незабутньою,<br>
-                    <strong>а Вона не зможе відмовити Вам</strong></p>
-            </div>
-
-            <div class="item">
-                <img src="/uploads/love/goods-2-<?= Yii::$app->language ?>.jpg" alt="">
-
-                <h4>Ексклюзивний товар</h4>
-
-                <p>Ви не знайдете цю каблучку у жодній ювелірній крамниці.<br>
-                Можливо щось схоже, можливо трохи схоже,<br>
-                Але це - <strong>наша ексклюзивна модель</strong></p>
-            </div>
-
-            <div class="item">
-                <img src="/uploads/love/goods-3-<?= Yii::$app->language ?>.jpg" alt="">
-
-                <h4>100% срібло</h4>
-
-                <p>Наші вироби виготовлені зі срібла 925 проби<br>
-                з золотою пластиною 375 проби.<br>
-                <strong>Кожен виріб має відповідне маркування<br>
-                    Національної пробірної палати України</strong></p>
-            </div>
-
-            <div class="item">
-                <img src="/uploads/love/goods-4-<?= Yii::$app->language ?>.jpg" alt="">
-
-                <h4>Безпечна покупка</h4>
-
-                <p>Жодних передплат “комусь на картку” і годин тривожних очікувань.<br>
-                Відправлення замовлень наложеним платежем Новою Поштою<br>
-                по всій території України.<br>
-                    <strong>Оплата тільки при отриманні замовлення</strong></p>
-            </div>
-
-            <div class="item">
-                <img src="/uploads/love/goods-5-<?= Yii::$app->language ?>.jpg" alt="">
-
-                <h4>Подарункова упаковка</h4>
-
-                <p>Ми вже подбали про те аби Ваш подарунок<br>
-                мав незабутній вигляд.<br>
-                <strong>Вартість подарункової упаковки<br>
-                    включена у вартість каблучки!</strong></p>
-            </div>
+            <?= $this->render('_goods-' . \Yii::$app->language) ?>
         </div>
     </section>
 
@@ -306,7 +227,9 @@ LoveAsset::register($this);
 
             <a href="tel:<?= \Yii::$app->params['adminPhone'] ?>" class="phone"><?= PhoneHelper::format(\Yii::$app->params['adminPhone'], PhoneHelper::PHONE_FORMAT_SHORT_PRINT) ?></a>
 
+<?php if (false): ?>
             <btn class="btn btn-lg btn-callback"><?=  \Yii::t('app', 'замовити зворотній дзвінок') ?></btn>
+<?php endif;?>
 
             <p class="notice"><?=  \Yii::t('app', 'Для оформлення замовлення по телефону<br>необхідно вказати розмір каблучки, населений пункт та номер відділення Нової Пошти<br>ПІБ та номер телефону отримувача посилки') ?></p>
 

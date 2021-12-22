@@ -1,3 +1,12 @@
+
+$('.anchor-link').click(function () {
+    var anchor = $('#' + $(this).data('anchor'));
+    $('html, body').animate({
+        scrollTop: anchor.offset().top
+    }, 500);
+    return false;
+});
+
 var App = {
     play: function () {
         var _self = this,

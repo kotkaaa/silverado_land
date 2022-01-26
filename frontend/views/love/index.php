@@ -59,8 +59,8 @@ LoveAsset::register($this);
             <h2><?=  \Yii::t('app', 'Купити каблучку для заручин за акційною ціною') ?></h2>
 
             <div class="price">
-                <span class="old">990</span>
-                740
+                <span class="old">790</span>
+                670
                 <small>грн</small>
             </div>
 
@@ -86,19 +86,52 @@ LoveAsset::register($this);
         </div>
     </section>
 
-    <section class="main__checkout" id="main-checkout">
+    <section class="main__checkout step-lang" id="main-checkout">
         <div class="container">
-            <img class="product-img" width="480" height="480" src="/uploads/love/product-<?= Yii::$app->language ?>.jpg" alt="">
+            <?php $form = ActiveForm::begin(['id' => 'checkoutForm', 'action' => Url::to(['/site/order'])]) ?>
+                <div class="product-img">
+                    <h3>
+                        Выберите язык<br>
+                        <small>надписи на ободке кольца</small>
+                    </h3>
 
-            <div class="checkout-form">
-                <?php $form = ActiveForm::begin(['id' => 'checkoutForm', 'action' => Url::to(['/site/order'])]) ?>
+                    <div class="select-lang">
+                        <div class="lang-item lang-item-ru">
+                            <img class="product-img" width="320" height="320" src="/uploads/love/product-ru.jpg" alt="">
+
+                            <label class="btn btn-success btn-lg">
+                                <?= Html::radio(Html::getInputName($order, 'sku'), false, [
+                                    'value' => 222,
+                                    'class' => 'hidden',
+                                    'onchange' => new JsExpression('Checkout.setLang("ru")')
+                                ]) ?>
+
+                                На русском
+                            </label>
+                        </div>
+
+                        <div class="lang-item lang-item-ua">
+                            <img class="product-img" width="320" height="320" src="/uploads/love/product-ua.jpg" alt="">
+
+                            <label class="btn btn-success btn-lg">
+                                <?= Html::radio(Html::getInputName($order, 'sku'), false, [
+                                    'value' => 252,
+                                    'class' => 'hidden',
+                                    'onchange' => new JsExpression('Checkout.setLang("ua")')
+                                ]) ?>
+
+                                Українською
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="checkout-form">
                     <div class="side-top">
                         <h3>
                             <small><?= \Yii::t('app', 'для оформлення замовлення') ?></small><br>
                             <?=  \Yii::t('app', 'Оберіть розмір каблучки') ?>
                         </h3>
-
-                        <?= $form->field($order, 'sku')->hiddenInput(['value' => 222])->label(false) ?>
 
                         <?= $form->field($order, 'size', ['template' => '{input}'])->radioButtonGroup(array_combine([15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 21], [15, 15.5, 16, 16.5, 17, 17.5, 18, 18.5, 19, 19.5, 20, 20.5, 21]), ['unselect' => null])->label(false) ?>
                     </div>
@@ -116,7 +149,7 @@ LoveAsset::register($this);
 
                             <div class="checkout-proceed">
                                 <p class="text-muted">
-                                    Для продовження вкажіть будь ласка ПІБ, номер телефону та відділення Нової Пошти
+                                    Для оформления заказа укажите ФИО, номер телефона и отделения Новой Почты
                                 </p>
 
                                 <?= $form->field($order, 'name')->textInput(['class' => 'form-control input-lg']) ?>
@@ -176,12 +209,12 @@ LoveAsset::register($this);
                             <?php Modal::end() ?>
 
                             <div class="price">
-                                <span class="old">990</span>
-                                740
+                                <span class="old">790</span>
+                                670
                                 <small>грн</small>
 
                                 <span class="hint">
-                                    <strong>+</strong> <?=  \Yii::t('app', 'подарункова упаковка у подарунок') ?>
+                                    <strong>+</strong> <?= \Yii::t('app', 'подарункова упаковка у подарунок') ?>
                                 </span>
                             </div>
                         </div>
@@ -208,11 +241,42 @@ LoveAsset::register($this);
                             <?=  \Yii::t('app', 'Швидка доставка по всій території України крім тимчасово окупованих АР Крим та окремих районів Донецької та Луганської областей') ?>
                         </div>
                     </div>
-                <?php ActiveForm::end() ?>
-            </div>
+                </div>
+            <?php ActiveForm::end() ?>
         </div>
     </section>
 
+    <div class="main__instagram">
+        <h3>
+            <?= Html::img('/img/love/instagram_logo.png', ['alt' => 'Instagram']) ?>
+            silverado_jewelry_boutique
+        </h3>
+
+        <div class="photos">
+            <div class="photo-row">
+            <?php for ($i = 1; $i < 10; $i++): ?>
+                <div class="photo">
+                    <?= Html::img('/uploads/love/insta-' . $i . '.jpeg') ?>
+                </div>
+            <?php if ($i % 3 == 0 && $i < 9): ?>
+            </div>
+            <div class="photo-row">
+            <?php endif;?>
+            <?php endfor;?>
+            </div>
+        </div>
+
+        <p class="follow-message">
+            Больше украшений в нашем <strong>Instagram</strong>
+        </p>
+
+        <a href="https://instagram.com/silverado_jewelry_boutique" rel="nofollow" target="_blank" class="btn btn-default btn-follow">
+            <img src="/img/love/add.png" alt="Follow us">
+            подписаться
+        </a>
+    </div>
+
+    <?php if (false): ?>
     <section class="main__goods">
         <h3><?=  \Yii::t('app', 'Чому варто <strong>купити каблучку для заручин?</strong>') ?></h3>
 
@@ -220,6 +284,7 @@ LoveAsset::register($this);
             <?= $this->render('_goods-' . \Yii::$app->language) ?>
         </div>
     </section>
+    <?php endif;?>
 
     <footer class="main_footer">
         <div class="container">

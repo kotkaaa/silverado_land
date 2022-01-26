@@ -182,3 +182,14 @@
   font-style: normal;
   font-display: swap;
 }
+
+@font-face {
+  font-family: "Billabong";
+  src: url("/fonts/Billabong/billabong.eot");
+  src: url("/fonts/Billabong/Billabong.svg#Billabong") format("svg"),
+    url("/fonts/Billabong/Billabong.ttf") format("truetype"),
+    url("/fonts/Billabong/Billabong.woff") format("woff"),
+    url("/fonts/Billabong/billabong.woff2")format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}

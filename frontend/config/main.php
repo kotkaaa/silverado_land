@@ -69,7 +69,7 @@ return [
                 'Русский' => 'ru',
                 'Українська' => 'uk',
             ],
-            'default_language' => 'ua',
+            'default_language' => 'ru',
             'show_default' => false,
         ]
     ],

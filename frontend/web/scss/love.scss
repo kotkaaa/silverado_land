@@ -294,12 +294,54 @@ body {
 }
 
 .main__checkout {
-  background: rgb(245,247,250);
-  background: linear-gradient(0deg, rgba(245,247,250,1) 0%, rgba(245,247,250,1) 50%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
   padding-top: 6em;
   padding-bottom: 6em;
 
-  .container {
+  &.step-lang {
+    .product-img {
+      width: 100%;
+      text-align: center;
+
+      .select-lang {
+        width: 100%;
+      }
+    }
+  }
+
+  &.step-size {
+    .product-img {
+      h3 {
+        display: none;
+      }
+
+      .lang-item {
+        &:not(.checked) {
+          display: none;
+        }
+
+        + .lang-item {
+          margin-left: 0;
+        }
+
+        img {
+          width: 480px;
+          height: auto;
+          box-shadow: -10px -10px 0px #e5e9ef;
+          border-radius: 0px !important;
+        }
+
+        .btn {
+          display: none;
+        }
+      }
+    }
+
+    .checkout-form {
+      display: block;
+    }
+  }
+
+  #checkoutForm {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -311,12 +353,56 @@ body {
   }
 
   .product-img {
-    box-shadow: -10px -10px 0px #e5e9ef;
-    max-width: 100%;
-    border: 1px solid #e5e9ef;
+    h3 {
+      @extend %GothamProMedium;
+      font-size: 36px;
+      color: #7f8795;
+      margin-top: 0;
+      margin-bottom: 0;
+
+      small {
+        font-size: 12px;
+        color: #949ba7;
+      }
+    }
+
+    .select-lang {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin-top: 20px;
+
+      .lang-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        + .lang-item {
+          margin-left: 20px;
+        }
+
+        img {
+          max-width: 100%;
+          width: 100%;
+          height: auto;
+          border: 1px solid #e5e9ef;
+          border-radius: 50%;
+        }
+
+        .btn {
+          margin-top: 20px;
+
+          &:hover {
+            animation: shadow-pulse-blue 1.5s;
+          }
+        }
+      }
+    }
   }
 
   .checkout-form {
+    display: none;
+
     @include breakpoint(960) {
       margin-left: 5em;
     }
@@ -556,6 +642,99 @@ body {
   }
 }
 
+.main__instagram {
+  background-color: #FAFAFA;
+  padding-top: 5em;
+  padding-bottom: 6em;
+  text-align: center;
+
+  h3 {
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: 2em;
+
+    img {
+      width: 48px;
+      height: 48px;
+      vertical-align: middle;
+    }
+  }
+
+  .btn-follow {
+    &:hover {
+      animation: shadow-pulse-dark 1.5s;
+    }
+  }
+
+  .photos {
+    max-width: 935px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .photo-row {
+      display: flex;
+      align-items: stretch;
+      flex-shrink: 0;
+      flex-wrap: nowrap;
+
+      + .photo-row {
+        margin-top: 3px;
+
+        @include breakpoint(736) {
+          margin-top: 28px;
+        }
+      }
+
+      .photo {
+        position: relative;
+        width: 100%;
+
+        + .photo {
+          margin-left: 3px;
+
+          @include breakpoint(736) {
+            margin-left: 28px;
+          }
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          max-width: 100%;
+          max-height: 100%;
+          object-fit: cover;
+        }
+
+        &:after {
+          display: block;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background-color: rgba(0, 0, 0, .3);
+        }
+
+        &:hover {
+          &:after {
+            content: '';
+          }
+        }
+      }
+    }
+  }
+
+  .follow-message {
+    font-size: 1.5em;
+    margin-top: 1em;
+
+    strong {
+      @extend %Billabong;
+      font-size: 1.75em;
+    }
+  }
+}
+
 .main_footer {
   @extend %GothamProMedium;
   background-image: url("/img/love/footer-bg.jpg");
@@ -654,6 +833,20 @@ body {
 
   100% {
     box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
+}
+
+@keyframes shadow-pulse-dark {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, .5);
+  }
+
+  70% {
+    box-shadow: 0 0 0 24px rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
 }
 

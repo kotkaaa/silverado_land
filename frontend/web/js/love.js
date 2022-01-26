@@ -41,9 +41,11 @@ var App = {
 
 var Checkout = {
     form: null,
+    root: null,
     init: function () {
         var self = this;
 
+        self.root = $('.main__checkout');
         self.form = $('#checkoutForm');
 
         // Phone mask
@@ -98,6 +100,12 @@ var Checkout = {
             newOption = new Option('-- Select --', null, false, false);;
 
         select.html(newOption).val(null).trigger('change');
+    },
+    setLang: function (lang) {
+        var self = this;
+
+        self.root.removeClass('step-lang').addClass('step-size');
+        self.form.find('.lang-item-' + lang).addClass('checked');
     }
 };
 

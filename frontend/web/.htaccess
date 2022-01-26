@@ -19,13 +19,13 @@ AddType image/jpeg .jpg .jpeg
 AddType image/bmp .bmp
 AddType image/gif .gif
 AddType image/vnd.microsoft.icon .cur
-AddType video/asf .asf .asx .wax .wmv .wmx
-AddType video/avi .avi
+#AddType video/asf .asf .asx .wax .wmv .wmx
+#AddType video/avi .avi
 AddType audio/midi .mid .midi
-AddType video/quicktime .mov .qt
+#AddType video/quicktime .mov .qt
 AddType audio/mpeg .mp3 .m4a
-AddType video/mp4 .mp4 .m4v
-AddType video/mpeg .mpeg .mpg .mpe
+#AddType video/mp4 .mp4 .m4v
+#AddType video/mpeg .mpeg .mpg .mpe
 AddType audio/ogg .ogg
 
 <IfModule mod_rewrite.c>
@@ -75,7 +75,7 @@ AddType audio/ogg .ogg
         AddOutputFilterByType DEFLATE application/json
         AddOutputFilterByType DEFLATE application/mp4
         AddOutputFilterByType DEFLATE image/jpeg image/png image/gif image/vnd.microsoft.icon
-        AddOutputFilterByType DEFLATE video/mp4 video/quicktime video/mpeg video/asf video/avi
+#        AddOutputFilterByType DEFLATE video/mp4 video/quicktime video/mpeg video/asf video/avi
         AddOutputFilterByType DEFLATE application/vnd.ms-fontobject application/x-font-ttf application/x-font-woff font/opentype image/svg+xml image/x-icon
     </ifModule>
 </ifModule>

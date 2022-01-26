@@ -16,7 +16,7 @@ LoveAsset::register($this);
 ?>
 
 <header class="header__media">
-    <video id="intro" preload="auto" allow="autoplay" autobuffer autoplay playsinline muted>
+    <video id="intro" preload="auto" allow="autoplay" autoplay playsinline muted>
         <source src="/uploads/love/silverado_jewelry_<?= Yii::$app->language ?>.mp4">
     </video>
 

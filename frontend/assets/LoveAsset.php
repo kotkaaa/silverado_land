@@ -18,6 +18,7 @@ class LoveAsset extends \yii\web\AssetBundle
         'js/libs/inputmask/dist/inputmask.min.js',
         'js/libs/inputmask/dist/jquery.inputmask.min.js',
         'js/libs/inputmask/dist/bindings/inputmask.binding.js',
+        'js/libs/videoplay/video-play.js',
         'js/love.js'
     ];
 

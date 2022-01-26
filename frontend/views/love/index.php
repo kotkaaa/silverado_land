@@ -16,7 +16,7 @@ LoveAsset::register($this);
 ?>
 
 <header class="header__media">
-    <div class="background-video-container" data-settings='{"url": "https://silverado.boutique/uploads/love/silverado_jewelry_<?= Yii::$app->language ?>.mp4", "play_on_mobile": true, "background_play_once": false}'>
+    <div class="background-video-container" data-settings='{"url": "/uploads/love/silverado_jewelry_<?= Yii::$app->language ?>.mp4", "play_on_mobile": true, "background_play_once": false}'>
         <video class="background-video-hosted html5-video" id="intro" autoplay muted playsinline></video>
         <div class="background-video-embed"></div>
     </div>

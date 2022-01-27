@@ -144,7 +144,7 @@ LoveAsset::register($this);
                                 'id' => 'checkoutModal',
                                 'centerVertical' => true,
                                 'toggleButton' => [
-                                    'tag' => 'a',
+                                    'tag' => 'button',
                                     'class' => 'btn btn-success btn-lg',
                                     'label' => \Yii::t('app', 'Замовити')
                                 ]

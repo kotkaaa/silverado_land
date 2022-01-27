@@ -68,6 +68,7 @@ body {
       font-size: 15px;
       color: #d9d9d9;
       letter-spacing: .2em;
+      white-space: nowrap;
     }
 
     &.animate-in {
@@ -335,7 +336,7 @@ body {
         }
 
         + .lang-item {
-          margin-left: 0;
+          margin-left: 0 !important;
         }
 
         img {
@@ -505,6 +506,7 @@ body {
 
       .btn-success {
         padding: 1em 4em;
+        display: block;
 
         &:hover {
           animation: shadow-pulse-blue 1.5s;
@@ -772,10 +774,14 @@ body {
 
   .phone {
     color: #ffeaaa;
-    font-size: 3em;
+    font-size: 2.2em;
     text-decoration: none;
     transition: color .2s ease;
     margin-top: .25em;
+
+    @include breakpoint(768) {
+      font-size: 3em;
+    }
 
     &:hover {
       color: #ffffff;

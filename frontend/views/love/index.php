@@ -12,6 +12,8 @@ use yii\helpers\Html;
 use yii\web\JsExpression;
 use common\helpers\PhoneHelper;
 
+$this->title = 'Silverado jewelry boutique';
+
 LoveAsset::register($this);
 ?>
 

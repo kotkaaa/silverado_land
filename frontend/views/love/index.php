@@ -253,7 +253,7 @@ LoveAsset::register($this);
 
     <div class="main__instagram">
         <h3>
-            <?= Html::img('/img/love/instagram_logo.png', ['alt' => 'Instagram']) ?>
+            <img src="/img/love/instagram_logo.png" alt="Instagram">
             silverado_jewelry_boutique
         </h3>
 

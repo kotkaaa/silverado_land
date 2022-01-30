@@ -14,6 +14,15 @@ use common\helpers\PhoneHelper;
 
 $this->title = 'Silverado jewelry boutique';
 
+$js = <<<JS
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-JVYGL7VB7C');
+JS;
+
+$this->registerJs($js, $this::POS_HEAD);
+
 LoveAsset::register($this);
 ?>
 

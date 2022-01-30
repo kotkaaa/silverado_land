@@ -64,7 +64,7 @@ class SiteController extends Controller
      */
     public function actionSuccess()
     {
-        if (!\Yii::$app->session->hasFlash('success')) {
+        if (\Yii::$app->session->getFlash('success') === null) {
             return $this->goHome()->send();
         }
 
@@ -80,8 +80,9 @@ class SiteController extends Controller
     {
         if (($form = new OrderForm()) !== null && $form->load(\Yii::$app->request->post()) && $this->orderService->createOrder($form)) {
             \Yii::$app->session->setFlash('success', 'Order confirmed.');
-            return $this->redirect(['success'])->send();
+            return $this->redirect('/site/success')->send();
         }
+
         return $this->redirect(\Yii::$app->request->referrer)->send();
     }
 

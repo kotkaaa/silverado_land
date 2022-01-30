@@ -185,7 +185,7 @@ LoveAsset::register($this);
                                             'errorLoading' => new JsExpression("function () { return 'Waiting for results...'; }"),
                                         ],
                                         'ajax' => [
-                                            'url' => Url::to(['/site/search-city']),
+                                            'url' => '/site/search-city',
                                             'dataType' => 'json',
                                             'data' => new JsExpression('function(params) { return {term:params.term}; }')
                                         ],
@@ -197,7 +197,7 @@ LoveAsset::register($this);
                                         'change.select2' => new JsExpression('function(e) {return Checkout.getWareHouses(e.target.value);}'),
                                         'select2:clear' => new JsExpression('function(e) {return Checkout.clearWareHouses();}')
                                     ],
-                                    'bsVersion' => '4.x',
+                                    'bsVersion' => '3.x',
                                     'theme' => Select2::THEME_BOOTSTRAP,
                                     'size' => Select2::LARGE
                                 ]) ?>
@@ -206,13 +206,13 @@ LoveAsset::register($this);
                                     'options' => [
                                         'multiple' => false,
                                         'placeholder' => '-- Select --',
-                                        'data-url' => Url::to(['/site/search-warehouse'])
+                                        'data-url' => '/site/search-warehouse'
                                     ],
                                     'pluginOptions' => [
                                         'allowClear' => true,
                                         'dropdownParent' => '#checkoutModal'
                                     ],
-                                    'bsVersion' => '4.x',
+                                    'bsVersion' => '3.x',
                                     'theme' => Select2::THEME_BOOTSTRAP,
                                     'size' => Select2::LARGE
                                 ]) ?>

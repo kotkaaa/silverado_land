@@ -18,6 +18,16 @@ AppAsset::register($this);
         <?php $this->registerCsrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-111714543-2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){
+                dataLayer.push(arguments);
+            }
+            gtag('js', new Date());
+            gtag('config', 'UA-111714543-2');
+        </script>
     </head>
     <body class="d-flex flex-column h-100">
         <?php $this->beginBody() ?>
